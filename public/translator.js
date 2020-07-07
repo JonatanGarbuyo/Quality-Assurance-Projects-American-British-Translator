@@ -26,12 +26,13 @@ const Translate = (text) => {
   
   text.split(" ").map((word)=>{
     console.log(word);/////////////////////////
+    translatedSentence.insertAdjacentText("afterend", "My inserted text");
     let highlight = document.createElement("span").setAttribute("class", "highlight");
-    highlight.innerText = word;
-    translatedSentence.appendChild(highlight);
+    highlight.innerText = "word";
+    translatedSentence
   });
   
-  //translatedSentence.innerText = "Everything looks good to me!";
+  //translatedSentence.innerText = translatedText.join(" ");
 }
 
 document.addEventListener("DOMContentLoaded", event => {
