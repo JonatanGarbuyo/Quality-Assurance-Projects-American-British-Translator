@@ -26,7 +26,7 @@ const Translate = (text) => {
   
   
   //translatedSentence.innerText = "Everything looks good to me!";
-}
+  <span class="highlight">...</span>
 
 
 document.addEventListener("DOMContentLoaded", event => {
