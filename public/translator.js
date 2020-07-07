@@ -22,12 +22,16 @@ const Translate = (text) => {
   console.log(text);
   text? "" : errorMessage.innerText = "Error: No text to translate.";
   
-  translatedSentence.innerText = textArea.value;
+  let highlight = document.createElement("span").setAttribute("class", "highlight");
   
+  text.split(" ").map((word)=>{
+    highlight.innerText = word;
+    translatedSentence.appendChild()
+  });
   
   //translatedSentence.innerText = "Everything looks good to me!";
-  <span class="highlight">...</span>
-
+  
+}
 
 document.addEventListener("DOMContentLoaded", event => {
   let translateButton = document.getElementById("translate-btn");
