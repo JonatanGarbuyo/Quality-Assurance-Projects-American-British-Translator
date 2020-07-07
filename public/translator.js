@@ -3,17 +3,20 @@ import { britishOnly } from './british-only.js';
 import { americanToBritishSpelling } from './american-to-british-spelling.js';
 import { americanToBritishTitles } from './american-to-british-titles.js';
 
-const textArea = document.getElementById("text-input");
-const localeSelect = document.getElementById("locale-select");
-const translateButton = document.getElementById("translate-btn");
-const clearButton = document.getElementById("clear-btn");
-const translatedSentence = document.getElementById("translated-sentence");
-const errorMessage = document.getElementById("error-msg");
+let textArea = document.getElementById("text-input");
+let localeSelect = document.getElementById("locale-select");
+let translatedSentence = document.getElementById("translated-sentence");
+let errorMessage = document.getElementById("error-msg");
+
        
 const ClearText = () => {
   textArea.value = ""
   translatedSentence.innerText = ""
 }
+
+
+
+
 
 const Translate = (text) => {
   console.log(text);
@@ -22,18 +25,13 @@ const Translate = (text) => {
   translatedSentence.innerText = textArea.value;
   
   
-  
-  
-  
-  
   //translatedSentence.innerText = "Everything looks good to me!";
 }
 
 
-
-
-
 document.addEventListener("DOMContentLoaded", event => {
+  let translateButton = document.getElementById("translate-btn");
+  let clearButton = document.getElementById("clear-btn");
   
   clearButton.addEventListener("click", ClearText);
   translateButton.addEventListener("click", Translate);
