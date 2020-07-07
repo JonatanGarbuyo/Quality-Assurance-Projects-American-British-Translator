@@ -3,8 +3,28 @@ import { britishOnly } from './british-only.js';
 import { americanToBritishSpelling } from './american-to-british-spelling.js';
 import { americanToBritishTitles } from './american-to-british-titles.js';
 
+// Handle British equivalents for spelling
+let americanToBritishDict = { ...americanToBritishSpelling };
+
+const reverseDictionary = obj => {
+  return Object.keys(obj).reduce((acc, curr) => {
+    acc[obj[curr]] = curr;
+    return acc;
+  }, {});
+}
+
+// Get British versions of spelling and titles
+let britishToAmericanDict = reverseDictionary({ ...americanToBritishDict });
+let britishToAmericanTitles = reverseDictionary({...americanToBritishTitles });
+
+// Append American only phrases and titles
+americanToBritishDict = { ...americanToBritishDict, ...americanOnly }
+
+// Append British only phrases
+britishToAmericanDict = { ...britishToAmericanDict, ...britishOnly }
+
+///////////////
 let textArea = document.getElementById("text-input");
-let localeSelect = document.getElementById("locale-select");
 let translatedSentence = document.getElementById("translated-sentence");
 let errorMessage = document.getElementById("error-msg");
 
