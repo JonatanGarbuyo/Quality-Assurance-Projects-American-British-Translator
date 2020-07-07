@@ -12,11 +12,21 @@ const errorMessage = document.getElementById("error-msg");
        
 const ClearText = () => {
   textArea.value = ""
-  translatedSentence.value = ""
+  translatedSentence.innerText = ""
 }
 
-const Translate = () => {
-  translatedSentence.value = textArea.value;
+const Translate = (text) => {
+  console.log(text);
+  text? "" : errorMessage.innerText = "Error: No text to translate.";
+  
+  translatedSentence.innerText = textArea.value;
+  
+  
+  
+  
+  
+  
+  //translatedSentence.innerText = "Everything looks good to me!";
 }
 
 
@@ -26,6 +36,7 @@ const Translate = () => {
 document.addEventListener("DOMContentLoaded", event => {
   
   clearButton.addEventListener("click", ClearText);
+  translateButton.addEventListener("click", Translate);
 });
 
 /* 
