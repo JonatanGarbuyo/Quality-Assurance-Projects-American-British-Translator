@@ -16,7 +16,7 @@ const ClearText = () => {
 }
 
 
-const Translate = (text) => {
+const Translate = (text, toLocale) => {
   console.log(text);///////////
   if(!text){ return errorMessage.innerText = "Error: No text to translate.";
   } else { errorMessage.innerText = ""; }
@@ -27,7 +27,13 @@ const Translate = (text) => {
   
   text.split(" ").map((word)=>{
     console.log(word);/////////////////////////
-    returnText.push(`palabra`);
+    
+    // is time?
+    
+    // is title?
+    
+    //other words
+    
     let highlightedText = document.createElement("span").setAttribute("class", "highlight");
     returnText.push(`<span class="highlight">${word}</span>`);
     
