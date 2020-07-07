@@ -12,6 +12,7 @@ let errorMessage = document.getElementById("error-msg");
 const ClearText = () => {
   textArea.value = ""
   translatedSentence.innerText = ""
+  errorMessage.innerText = "";
 }
 
 
@@ -19,18 +20,18 @@ const ClearText = () => {
 
 
 const Translate = (text) => {
-  console.log(text);
-  text? "" : errorMessage.innerText = "Error: No text to translate.";
-  
-  let highlight = document.createElement("span").setAttribute("class", "highlight");
+  console.log(text);///////////
+  if(!text){ return errorMessage.innerText = "Error: No text to translate.";
+  } else { errorMessage.innerText = ""; }
   
   text.split(" ").map((word)=>{
+    console.log(word);/////////////////////////
+    let highlight = document.createElement("span").setAttribute("class", "highlight");
     highlight.innerText = word;
-    translatedSentence.appendChild()
+    translatedSentence.appendChild(highlight);
   });
   
   //translatedSentence.innerText = "Everything looks good to me!";
-  
 }
 
 document.addEventListener("DOMContentLoaded", event => {
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", event => {
   let clearButton = document.getElementById("clear-btn");
   
   clearButton.addEventListener("click", ClearText);
-  translateButton.addEventListener("click", Translate);
+  translateButton.addEventListener("click", () => Translate(textArea.value));
 });
 
 /* 
