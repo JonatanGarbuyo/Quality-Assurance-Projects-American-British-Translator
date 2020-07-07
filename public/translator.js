@@ -16,9 +16,6 @@ const ClearText = () => {
 }
 
 
-
-
-
 const Translate = (text) => {
   console.log(text);///////////
   if(!text){ return errorMessage.innerText = "Error: No text to translate.";
@@ -47,7 +44,11 @@ document.addEventListener("DOMContentLoaded", event => {
   let clearButton = document.getElementById("clear-btn");
   
   clearButton.addEventListener("click", ClearText);
-  translateButton.addEventListener("click", () => Translate(textArea.value));
+  translateButton.addEventListener("click", () => {
+    let toLocale = document.getElementById('locale-select').value === 'american-to-british' ? 'toBritish' : 'toAmerican';
+    Translate(textArea.value, toLocale)
+    
+  });
 });
 
 /* 
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", event => {
 */
 try {
   module.exports = {
-
+    ClearText,
+    Translate
   }
 } catch (e) {}
