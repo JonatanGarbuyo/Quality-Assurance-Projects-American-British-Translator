@@ -24,22 +24,22 @@ const Translate = (text) => {
   if(!text){ return errorMessage.innerText = "Error: No text to translate.";
   } else { errorMessage.innerText = ""; }
   
+  let returnText = [];
   //var content = document.createTextNode("<YOUR_CONTENT>");
   //translatedSentence.appendChild(content);
   
   text.split(" ").map((word)=>{
     console.log(word);/////////////////////////
-    translatedSentence.appendChild();
+    returnText.push(`palabra`);
     let highlightedText = document.createElement("span").setAttribute("class", "highlight");
-    highlightedText.innerText = word
-    translatedSentence.appendChild();
+    returnText.push(`<span class="highlight">${word}</span>`);
     
     //translatedSentence.insertAdjacentText("afterend", "My inserted text");
     //translatedSentence.insertAdjacentHTML("afterend", `<span class="highlight">${word}</span>`);
     
   });
   
-  //translatedSentence.innerText = translatedText.join(" ");
+  translatedSentence.innerHTML = returnText.join(" ");
 }
 
 document.addEventListener("DOMContentLoaded", event => {
