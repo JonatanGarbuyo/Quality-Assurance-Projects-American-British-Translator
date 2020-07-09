@@ -53,18 +53,16 @@ const Translate = (text, toLocale) => {
     //test if word is time //
     //HH:MM 12-hour format, optional leading 0
     let regexTime = /^(0?[1-9]|1[0-2])([\.\:])([0-5][0-9])$/;
-    
     if (regexTime.test(word)){
-      word.match(regexTime, ($1, $2, $3, $4) => {
-        console.log("it is time - t1: " + $1);/////////////////
-        console.log("t2: " + $2);//////////////////////
-        console.log("t3: " + $3);////////////////
-        console.log("t4: " + $4);////////////////////
-        if (toLocale === 'toBritish' && $3 === ":"){ returnText.push(highlighText(`${$2}.${$4}`)) }
-        else if (toLocale === 'toAmerican' && $3 === "."){ returnText.push(highlighText(`${$2}:${$4}`)) }
-        else { returnText.push($1) }
-        return ;
-      })
+      returnText.push(word.replace(regexTime, ($1, $2, $3, $4) => {
+        console.log("time - $1: " + $1);/////////////////
+        console.log("hour - $2: " + $2);//////////////////////
+        console.log("separator $3: " + $3);////////////////
+        console.log("min - $4: " + $4);////////////////////
+        if (toLocale === 'toBritish' && $3 === ":"){ return highlighText(`${$2}.${$4}`); }
+        else if (toLocale === 'toAmerican' && $3 === "."){ return highlighText(`${$2}:${$4}`); }
+        else { return $1; }
+      }));
       return;
     }
     
@@ -81,7 +79,8 @@ const Translate = (text, toLocale) => {
     
     //translatedSentence.insertAdjacentText("afterend", "My inserted text");
     //translatedSentence.insertAdjacentHTML("afterend", `<span class="highlight">${word}</span>`);
-    
+    returnText.push(word);
+    return
   });
   
   translatedSentence.innerHTML = returnText.join(" ");
