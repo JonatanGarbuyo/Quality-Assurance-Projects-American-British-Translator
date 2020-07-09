@@ -51,13 +51,13 @@ const Translate = (text, toLocale) => {
   } else { errorMessage.innerText = ""; }
   
   // test for 2 or more words terms.
-  Object.getOwnPropertyNames(Dict)
-    .sort( (a, b) => b.length - a.length )
-    .forEach(term => {
-    
-  })
+  let arrayDic = Object.getOwnPropertyNames(Dict).sort( (a, b) => b.length - a.length );
   
-  
+  for (let term in arrayDic){
+     text.replace(term, () =>{
+       
+     });
+  }
   
   
   let returnText = text.split(" ").map((word, i, arr)=>{
