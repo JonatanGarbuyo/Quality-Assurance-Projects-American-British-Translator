@@ -68,15 +68,21 @@ const Translate = (text, toLocale) => {
     
     let testWord = word.toLowerCase();
     let testTerm = testWord.split(/([\s,.;:?])/);
-    console.log("is title? ");///////////////
+    console.log("testWord: "+testWord);///////////////
+    console.log("testTerm[0]: "+testTerm[0]);///////////////
+    console.log("testTerm[1]: "+testTerm[1]);///////////////
     
     if (toLocale === 'toBritish'){
       // is title? 
       if (americanToBritishTitles[testWord]) {
-          return highlighText(capitalize(americanToBritishTitles[testWord]));
+        console.log("americanToBritishTitles[testWord]: "+americanToBritishTitles[testWord]);///////////////
+        needTranslation = true;
+        return highlighText(capitalize(americanToBritishTitles[testWord]));
       }
       //other terms
       if (americanToBritishDict[testTerm[0]]){
+        console.log("americanToBritishDict[testTerm[0]: "+americanToBritishDict[testTerm[0]);///////////////
+        needTranslation = true;
         return word[0] > 64 && word < 91? 
           // return the capitalized and highlighted text plus sign if there is any.
           highlighText(capitalize(americanToBritishDict[testTerm[0]])) + testTerm[1]?testTerm[1]:""
@@ -86,10 +92,12 @@ const Translate = (text, toLocale) => {
     else if (toLocale === 'toAmerican'){ 
       // is title? 
       if (britishToAmericanTitles[testWord]) {
-          return highlighText(capitalize(britishToAmericanTitles[testWord]));
+        needTranslation = true;
+        return highlighText(capitalize(britishToAmericanTitles[testWord]));
       }
       //other terms
       if (britishToAmericanDict[testTerm[0]]){
+        needTranslation = true;
         return word[0] > 64 && word < 91? 
           // return the capitalized and highlighted text plus sign if there is any.
           highlighText(capitalize(britishToAmericanDict[testTerm[0]])) + testTerm[1]?testTerm[1]:""
@@ -97,15 +105,14 @@ const Translate = (text, toLocale) => {
       }
     }
     
-    
-    
-    
-    
     return word;
   });
   
-  translatedSentence.innerHTML = returnText.join(" ");
+  return needTranslation?
+    translatedSentence.innerHTML = returnText.join(" ")
+  : translatedSentence.innerHTML = "Everything looks good to me!";
 }
+
 
 document.addEventListener("DOMContentLoaded", event => {
   let translateButton = document.getElementById("translate-btn");
