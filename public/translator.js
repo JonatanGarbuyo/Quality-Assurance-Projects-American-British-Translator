@@ -35,8 +35,10 @@ const ClearText = () => {
   errorMessage.innerText = "";
 }
 
+
 const highlighText = text => `<span class="highlight">${text}</span>`;
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+
 
 const Translate = (text, toLocale) => {
   
@@ -47,7 +49,7 @@ const Translate = (text, toLocale) => {
   if(!text){ return errorMessage.innerText = "Error: No text to translate.";
   } else { errorMessage.innerText = ""; }
   
-  let returnText = text.split(" ").map((word)=>{
+  let returnText = text.split(" ").map((word, i, arr)=>{
     console.log("word to test:" + word);/////////////////////////
     
     //test if word is time //
@@ -95,6 +97,7 @@ const Translate = (text, toLocale) => {
           : highlighText(americanToBritishDict[testTerm[0]]) + (testTerm[1]?testTerm[1]:"");
       }
       // 
+      
     } 
     else if (toLocale === 'toAmerican'){ 
       // is title? 
