@@ -52,14 +52,17 @@ const Translate = (text, toLocale) => {
   text.split(" ").map((word)=>{
     console.log("word:" + word);/////////////////////////
     
-    // is time?
-    let regexTime = /^(\d{1,2})([\.\:])(\d{2})$/;
+    // is time? //
+    //HH:MM 12-hour format, optional leading 0
+    let regexTime = /^(0?[1-9]|1[0-2])([\.\:])([0-5][0-9])$/;
+    
     if (regexTime.test(word)){
       word.replace(regexTime, ($1, $2, $3, $4) => {
         console.log("t1: " + $1);
         console.log("t2: " + $2);
         console.log("t3: " + $3);
         console.log("t4: " + $4);
+        if (toLocale === 'toBritish')
       })
     }
     
