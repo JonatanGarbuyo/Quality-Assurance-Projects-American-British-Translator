@@ -59,8 +59,12 @@ const Translate = (text, toLocale) => {
         console.log("hour - $2: " + $2);//////////////////////
         console.log("separator $3: " + $3);////////////////
         console.log("min - $4: " + $4);////////////////////
-        if (toLocale === 'toBritish' && $3 === ":"){ return highlighText(`${$2}.${$4}`); }
-        else if (toLocale === 'toAmerican' && $3 === "."){ return highlighText(`${$2}:${$4}`); }
+        if (toLocale === 'toBritish' && $3 === ":"){ 
+          needTranslation = true;
+          return highlighText(`${$2}.${$4}`); }
+        else if (toLocale === 'toAmerican' && $3 === "."){ 
+          needTranslation = true;
+          return highlighText(`${$2}:${$4}`); }
         else { return $1; }
       });
     }
@@ -94,16 +98,19 @@ const Translate = (text, toLocale) => {
     else if (toLocale === 'toAmerican'){ 
       // is title? 
       if (britishToAmericanTitles[testWord]) {
+        console.log("britishToAmericanTitles[testWord]: "+britishToAmericanTitles[testWord]);///////////////
         needTranslation = true;
         return highlighText(capitalize(britishToAmericanTitles[testWord]));
       }
       //other terms
       if (britishToAmericanDict[testTerm[0]]){
         needTranslation = true;
+        console.log("capitalize: " +capitalize(britishToAmericanDict[testTerm[0]]));
+        console.log(word <= "Z");
         return word[0] >= "A" && word <= "Z"? 
           // return the capitalized and highlighted text plus sign if there is any.
-          highlighText(capitalize(britishToAmericanDict[testTerm[0]])) + testTerm[1]?testTerm[1]:""
-          : highlighText(britishToAmericanDict[testTerm[0]]) + testTerm[1]?testTerm[1]:"";
+          highlighText(capitalize(britishToAmericanDict[testTerm[0]])) + (testTerm[1]?testTerm[1]:"")
+          : highlighText(britishToAmericanDict[testTerm[0]]) + (testTerm[1]?testTerm[1]:"");
       }
     }
     
