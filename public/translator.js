@@ -47,16 +47,14 @@ const Translate = (text, toLocale) => {
   if(!text){ return errorMessage.innerText = "Error: No text to translate.";
   } else { errorMessage.innerText = ""; }
   
-  let returnText = [];
-  
-  text.split(" ").map((word)=>{
+  let returnText = text.split(" ").map((word)=>{
     console.log("word to test:" + word);/////////////////////////
     
     //test if word is time //
     //HH:MM 12-hour format, optional leading 0
     let regexTime = /^(0?[1-9]|1[0-2])([\.\:])([0-5][0-9])$/;
     if (regexTime.test(word)){
-      returnText.push(word.replace(regexTime, ($1, $2, $3, $4) => {
+      return word.replace(regexTime, ($1, $2, $3, $4) => {
         console.log("time - $1: " + $1);/////////////////
         console.log("hour - $2: " + $2);//////////////////////
         console.log("separator $3: " + $3);////////////////
@@ -64,8 +62,7 @@ const Translate = (text, toLocale) => {
         if (toLocale === 'toBritish' && $3 === ":"){ return highlighText(`${$2}.${$4}`); }
         else if (toLocale === 'toAmerican' && $3 === "."){ return highlighText(`${$2}:${$4}`); }
         else { return $1; }
-      }));
-      return;
+      });
     }
     
     // is title? 
@@ -74,8 +71,8 @@ const Translate = (text, toLocale) => {
     if (toLocale === 'toBritish'){
       for (let title in americanToBritishTitles){
         console.log("title: "+ title);////////////
-        if (word.toLowerCase() === americanToBritishTitles[title]){
-          return highlighText(americanToBritishTitles[title]
+        if (word.toLowerCase() === title){
+          return highlighText(americanToBritishTitles[title].charAt(0).toUpperCase() + americanToBritishTitles[title].slice(1));
         }
       }
     } 
@@ -93,8 +90,8 @@ const Translate = (text, toLocale) => {
     
     //translatedSentence.insertAdjacentText("afterend", "My inserted text");
     //translatedSentence.insertAdjacentHTML("afterend", `<span class="highlight">${word}</span>`);
-    returnText.push(word);
-    return;
+    //returnText.push(word);
+    return word;
   });
   
   translatedSentence.innerHTML = returnText.join(" ");
