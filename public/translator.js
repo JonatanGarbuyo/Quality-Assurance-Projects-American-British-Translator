@@ -61,14 +61,13 @@ const Translate = (text, toLocale) => {
     if (text.toLowerCase().includes(compTerm[term])) {
       needTranslation = true
       text = text.replace(regEx, ()=>{
-        return Dictionary[compTerm[term]];
+        return highlighText(Dictionary[compTerm[term]]);
       });
     }
   }
-  
   console.log("text: "+text);///////////
   
-  
+  // check every word of the sentence.
   let returnText = text.split(" ").map((word, i, arr)=>{
     console.log("word to test:" + word);/////////////////////////
     

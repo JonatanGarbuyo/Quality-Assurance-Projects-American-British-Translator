@@ -31,8 +31,9 @@ suite('Unit Tests', () => {
       test('Mangoes are my favorite fruit. --> Mangoes are my favourite fruit.', done => {
         const input = 'Mangoes are my favorite fruit.';
         const output = 'Mangoes are my favourite fruit.';
-
-        // done();
+        const testStr = Translator.Translate(input, 'british').translatedStr;
+        assert.strictEqual(testStr, output);
+        done();
       });
 
       test('I ate yogurt for breakfast. --> I ate yoghurt for breakfast.', done => {
