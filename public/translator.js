@@ -35,6 +35,8 @@ const ClearText = () => {
   errorMessage.innerText = "";
 }
 
+const highlighText = text => `<span class="highlight">${text}</span>`;
+
 
 const Translate = (text, toLocale) => {
   console.log("text: " + text);///////////
@@ -51,10 +53,13 @@ const Translate = (text, toLocale) => {
     console.log("word:" + word);/////////////////////////
     
     // is time?
-    let regexTime = /^\d{1,2}([\.\:])\d{2}$/;
+    let regexTime = /^(\d{1,2})([\.\:])(\d{2})$/;
     if (regexTime.test(word)){
-      word.replace(regexTime, ($1) => {
-        console.log("t: " + t);
+      word.replace(regexTime, ($1, $2, $3, $4) => {
+        console.log("t1: " + $1);
+        console.log("t2: " + $2);
+        console.log("t3: " + $3);
+        console.log("t4: " + $4);
       })
     }
     
@@ -65,8 +70,8 @@ const Translate = (text, toLocale) => {
     
     //other words
     
-    let highlightedText = document.createElement("span").setAttribute("class", "highlight");
-    returnText.push(`<span class="highlight">${word}</span>`);
+    //let highlightedText = document.createElement("span").setAttribute("class", "highlight");
+    //returnText.push(`<span class="highlight">${word}</span>`);
     
     //translatedSentence.insertAdjacentText("afterend", "My inserted text");
     //translatedSentence.insertAdjacentHTML("afterend", `<span class="highlight">${word}</span>`);
