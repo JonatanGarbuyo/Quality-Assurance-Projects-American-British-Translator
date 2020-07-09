@@ -65,6 +65,8 @@ const Translate = (text, toLocale) => {
       });
     }
     
+    
+    let testWord = 
     console.log("is title? ");///////////////
     
     if (toLocale === 'toBritish'){
