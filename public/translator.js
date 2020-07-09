@@ -46,30 +46,33 @@ const Translate = (text, toLocale) => {
   } else { errorMessage.innerText = ""; }
   
   let returnText = [];
-  //var content = document.createTextNode("<YOUR_CONTENT>");
-  //translatedSentence.appendChild(content);
   
   text.split(" ").map((word)=>{
-    console.log("word:" + word);/////////////////////////
+    console.log("word to test:" + word);/////////////////////////
     
-    // is time? //
+    //test if word is time //
     //HH:MM 12-hour format, optional leading 0
     let regexTime = /^(0?[1-9]|1[0-2])([\.\:])([0-5][0-9])$/;
     
     if (regexTime.test(word)){
-      word.replace(regexTime, ($1, $2, $3, $4) => {
-        console.log("t1: " + $1);
-        console.log("t2: " + $2);
-        console.log("t3: " + $3);
-        console.log("t4: " + $4);
-        if (toLocale === 'toBritish')
+      word.match(regexTime, ($1, $2, $3, $4) => {
+        console.log("it is time - t1: " + $1);/////////////////
+        console.log("t2: " + $2);//////////////////////
+        console.log("t3: " + $3);////////////////
+        console.log("t4: " + $4);////////////////////
+        if (toLocale === 'toBritish' && $3 === ":"){ returnText.push(highlighText(`${$2}.${$4}`)) }
+        else if (toLocale === 'toAmerican' && $3 === "."){ returnText.push(highlighText(`${$2}:${$4}`)) }
+        else { returnText.push($1) }
+        return ;
       })
+      return;
     }
     
                    
                    
                    
-    // is title?
+    // is title? 
+    console.log("is title? ");
     
     //other words
     
