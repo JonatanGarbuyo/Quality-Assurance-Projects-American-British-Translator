@@ -75,7 +75,7 @@ const Translate = (text, toLocale) => {
       for (let title in americanToBritishTitles){
         console.log("title: "+ title);////////////
         if (word.toLowerCase() === americanToBritishTitles[title]){
-          
+          return highlighText(americanToBritishTitles[title]
         }
       }
     } 
