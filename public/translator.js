@@ -66,25 +66,20 @@ const Translate = (text, toLocale) => {
     }
     
     
-    let testWord = 
+    let testWord = word.toLowerCase().
     console.log("is title? ");///////////////
     
     if (toLocale === 'toBritish'){
-      // is title? 
-      for (let title in americanToBritishTitles){
-        console.log("title: "+ title);////////////
-        if (word.toLowerCase() === title){
-          return highlighText(capitalize(americanToBritishTitles[title]));
-        }
+    // is title? 
+      if (americanToBritishTitles[testWord]) {
+          return highlighText(capitalize(americanToBritishTitles[testWord]));
       }
       //other terms
-      for (let term in americanToBritishDict){
-        console.log("term: "+ term);////////////
-        if (word.toLowerCase() === term){
-          return word[0] > 64 && word < 91? 
-            highlighText(capitalize(americanToBritishDict[term])) 
-            : highlighText(americanToBritishDict[term]);
-        }
+      let testTerm = testWord
+      if (americanToBritishDict[testWord]){
+        return word[0] > 64 && word < 91? 
+          highlighText(capitalize(americanToBritishDict[testWord])) 
+          : highlighText(americanToBritishDict[testWord]);
       }
       
       
