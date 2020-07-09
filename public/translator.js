@@ -53,7 +53,7 @@ const Translate = (text, toLocale) => {
   // test for 2 or more words terms.
   Object.keys(Dict).forEach(term => {
     
-  }
+  })
   
   
   
