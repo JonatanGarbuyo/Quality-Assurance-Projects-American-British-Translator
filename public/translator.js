@@ -66,31 +66,34 @@ const Translate = (text, toLocale) => {
     }
     
     
-    let testWord = word.toLowerCase().
+    let testWord = word.toLowerCase();
+    let testTerm = testWord.split(/([\s,.;:?])/);
     console.log("is title? ");///////////////
     
     if (toLocale === 'toBritish'){
-    // is title? 
+      // is title? 
       if (americanToBritishTitles[testWord]) {
           return highlighText(capitalize(americanToBritishTitles[testWord]));
       }
       //other terms
-      let testTerm = testWord.split(/([\s,.;:?])/);
       if (americanToBritishDict[testTerm[0]]){
         return word[0] > 64 && word < 91? 
-          highlighText(capitalize(americanToBritishDict[testTerm[0]])) 
-          : highlighText(americanToBritishDict[testTerm[0]]);
+          // return the capitalized and highlighted text plus sign if there is any.
+          highlighText(capitalize(americanToBritishDict[testTerm[0]])) + testTerm[1]?testTerm[1]:""
+          : highlighText(americanToBritishDict[testTerm[0]]) + testTerm[1]?testTerm[1]:"";
       }
-      
-      
-      
     } 
     else if (toLocale === 'toAmerican'){ 
-      for (let title in britishToAmericanTitles){
-        console.log("title: "+ title);////////////
-        if (word.toLowerCase() === title){
-          return highlighText(britishToAmericanTitles[title].charAt(0).toUpperCase() + britishToAmericanTitles[title].slice(1));
-        }
+      // is title? 
+      if (britishToAmericanTitles[testWord]) {
+          return highlighText(capitalize(britishToAmericanTitles[testWord]));
+      }
+      //other terms
+      if (britishToAmericanDict[testTerm[0]]){
+        return word[0] > 64 && word < 91? 
+          // return the capitalized and highlighted text plus sign if there is any.
+          highlighText(capitalize(britishToAmericanDict[testTerm[0]])) + testTerm[1]?testTerm[1]:""
+          : highlighText(britishToAmericanDict[testTerm[0]]) + testTerm[1]?testTerm[1]:"";
       }
     }
     
