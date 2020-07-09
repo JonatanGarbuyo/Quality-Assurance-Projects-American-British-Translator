@@ -38,7 +38,8 @@ const ClearText = () => {
 
 const Translate = (text, toLocale) => {
   console.log(text);///////////
-  console.log("toLocale: " +);///////////
+  console.log("toLocale: " + toLocale);///////////
+  
   if(!text){ return errorMessage.innerText = "Error: No text to translate.";
   } else { errorMessage.innerText = ""; }
   
@@ -50,6 +51,7 @@ const Translate = (text, toLocale) => {
     console.log(word);/////////////////////////
     
     // is time?
+    let regExTime = /^\d(:2)[\.\:]\d(:2)$/;
     
     // is title?
     
