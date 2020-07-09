@@ -51,7 +51,8 @@ const Translate = (text, toLocale) => {
     console.log(word);/////////////////////////
     
     // is time?
-    let regExTime = /^\d(:2)[\.\:]\d(:2)$/;
+    let regExTime = /^\d{1,2}([\.\:])\d{2}$/;
+    
     
     // is title?
     
