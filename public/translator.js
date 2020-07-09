@@ -36,7 +36,7 @@ const ClearText = () => {
 }
 
 const highlighText = text => `<span class="highlight">${text}</span>`;
-
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
 const Translate = (text, toLocale) => {
   
@@ -65,32 +65,42 @@ const Translate = (text, toLocale) => {
       });
     }
     
-    // is title? 
-    console.log("is title? ");
+    console.log("is title? ");///////////////
     
     if (toLocale === 'toBritish'){
+      // is title? 
       for (let title in americanToBritishTitles){
         console.log("title: "+ title);////////////
         if (word.toLowerCase() === title){
-          return highlighText(americanToBritishTitles[title].charAt(0).toUpperCase() + americanToBritishTitles[title].slice(1));
+          return highlighText(capitalize(americanToBritishTitles[title]));
         }
       }
+      //other terms
+      for (let term in americanToBritishDict){
+        console.log("term: "+ term);////////////
+        if (word.toLowerCase() === term){
+          return word[0] > 64 && word < 91? 
+            highlighText(capitalize(americanToBritishDict[term])) 
+            : highlighText(americanToBritishDict[term]);
+        }
+      }
+      
+      
+      
     } 
     else if (toLocale === 'toAmerican'){ 
-      for (let term in britishToAmericanDict){
-        console.log("term: "+ term);////////////
+      for (let title in britishToAmericanTitles){
+        console.log("title: "+ title);////////////
+        if (word.toLowerCase() === title){
+          return highlighText(britishToAmericanTitles[title].charAt(0).toUpperCase() + britishToAmericanTitles[title].slice(1));
+        }
       }
     }
     
     
-    //other words
     
-    //let highlightedText = document.createElement("span").setAttribute("class", "highlight");
-    //returnText.push(`<span class="highlight">${word}</span>`);
     
-    //translatedSentence.insertAdjacentText("afterend", "My inserted text");
-    //translatedSentence.insertAdjacentHTML("afterend", `<span class="highlight">${word}</span>`);
-    //returnText.push(word);
+    
     return word;
   });
   
