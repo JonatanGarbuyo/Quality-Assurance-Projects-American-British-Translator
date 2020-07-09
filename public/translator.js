@@ -54,8 +54,10 @@ const Translate = (text, toLocale) => {
   let arrayDic = Object.getOwnPropertyNames(Dict).sort( (a, b) => b.length - a.length );
   
   for (let term in arrayDic){
-     text.replace(term, () =>{
-       
+    console.log("term: "+term);/////////////
+    let regEx = new RegExp(term, "i");
+    text.replace(regEx, (item) => {
+        console.log(Dict[term]);
      });
   }
   
