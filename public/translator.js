@@ -38,6 +38,7 @@ const ClearText = () => {
 
 const Translate = (text, toLocale) => {
   console.log(text);///////////
+  console.log("toLocale: " +);///////////
   if(!text){ return errorMessage.innerText = "Error: No text to translate.";
   } else { errorMessage.innerText = ""; }
   
