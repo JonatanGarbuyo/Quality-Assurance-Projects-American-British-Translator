@@ -54,70 +54,12 @@ const Translate = (text, toLocale) => {
   let arrayDic = Object.getOwnPropertyNames(Dict).sort( (a, b) => b.length - a.length );
   
   for (let term in arrayDic){
-    console.log("term: "+term);/////////////
-    let regEx = new RegExp(term, "i");
-    text.replace(regEx, (item) => {
-        console.log(Dict[term]);
-     });
+    let regEx = new RegExp(arrayDic[term], "i");
+    console.log(text.includes(arrayDic[term]);
+    text.replace(regEx, (x)=>Dict[x])
   }
+  console.log("text: "+text);///////////
   
-  
-  let returnText = text.split(" ").map((word, i, arr)=>{
-    console.log("word to test:" + word);/////////////////////////
-    
-    //test if word is time //
-    //HH:MM 12-hour format, optional leading 0
-    let regexTime = /^(0?[1-9]|1[0-2])([\.\:])([0-5][0-9])$/;
-    if (regexTime.test(word)){
-      return word.replace(regexTime, ($1, $2, $3, $4) => {
-        console.log("time - $1: " + $1);/////////////////
-        console.log("hour - $2: " + $2);//////////////////////
-        console.log("separator $3: " + $3);////////////////
-        console.log("min - $4: " + $4);////////////////////
-        if (toLocale === 'toBritish' && $3 === ":"){ 
-          needTranslation = true;
-          return highlighText(`${$2}.${$4}`); }
-        else if (toLocale === 'toAmerican' && $3 === "."){ 
-          needTranslation = true;
-          return highlighText(`${$2}:${$4}`); }
-        else { return $1; }
-      });
-    }
-    
-    
-    let testWord = word.toLowerCase();
-    let testTerm = testWord.split(/([\s,.;:?])/);
-    console.log("testWord: "+testWord);///////////////
-    console.log("testTerm[0]: "+testTerm[0]);///////////////
-    console.log("testTerm[1]: "+testTerm[1]);///////////////
-    
-    // is title? 
-    if (americanToBritishTitles[testWord]) {
-      console.log("americanToBritishTitles[testWord]: "+americanToBritishTitles[testWord]);///////////////
-      needTranslation = true;
-      return highlighText(capitalize(americanToBritishTitles[testWord]));
-    }
-    //other terms
-    if (Dict[testTerm[0]]){
-      console.log(Dict+"[testTerm[0]: "+Dict[testTerm[0]]);///////////////
-      needTranslation = true;
-      console.log("capitalize: " +capitalize(Dict[testTerm[0]]));
-      console.log(word <= "Z");
-      return word[0] >= "A" && word <= "Z"? 
-        // return the capitalized and highlighted text plus sign if there is any.
-        highlighText(capitalize(Dict[testTerm[0]])) + (testTerm[1]?testTerm[1]:"")
-        : highlighText(Dict[testTerm[0]]) + (testTerm[1]?testTerm[1]:"");
-    }
-    // 
-      
-    
-    
-    return word;
-  });
-  
-  return needTranslation?
-    translatedSentence.innerHTML = returnText.join(" ")
-  : translatedSentence.innerHTML = "Everything looks good to me!";
 }
 
 
