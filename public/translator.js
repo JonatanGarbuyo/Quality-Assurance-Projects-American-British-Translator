@@ -37,7 +37,7 @@ const ClearText = () => {
 
 
 const Translate = (text, toLocale) => {
-  console.log(text);///////////
+  console.log("text: " + text);///////////
   console.log("toLocale: " + toLocale);///////////
   
   if(!text){ return errorMessage.innerText = "Error: No text to translate.";
@@ -48,12 +48,19 @@ const Translate = (text, toLocale) => {
   //translatedSentence.appendChild(content);
   
   text.split(" ").map((word)=>{
-    console.log(word);/////////////////////////
+    console.log("word:" + word);/////////////////////////
     
     // is time?
-    let regExTime = /^\d{1,2}([\.\:])\d{2}$/;
+    let regexTime = /^\d{1,2}[\.\:]\d{2}$/;
+    if (word.test(regexTime)){
+      word.replace(regexTime, (t) => {
+        console.log("t: " + t);
+      })
+    }
     
-    
+                   
+                   
+                   
     // is title?
     
     //other words
