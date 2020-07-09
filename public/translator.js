@@ -39,6 +39,8 @@ const highlighText = text => `<span class="highlight">${text}</span>`;
 
 
 const Translate = (text, toLocale) => {
+  
+  let needTranslation = false;
   console.log("text: " + text);///////////
   console.log("toLocale: " + toLocale);///////////
   
@@ -69,6 +71,18 @@ const Translate = (text, toLocale) => {
     // is title? 
     console.log("is title? ");
     
+    if (toLocale === 'toBritish'){
+      forEach(term in americanToBritishDict){
+        
+      }
+      return highlighText(`${$2}.${$4}`); 
+    }
+    else if (toLocale === 'toAmerican'){ 
+      forEach(term in britishToAmericanDict){
+        
+      }
+      return highlighText(`${$2}:${$4}`); 
+    }
     //other words
     
     //let highlightedText = document.createElement("span").setAttribute("class", "highlight");
