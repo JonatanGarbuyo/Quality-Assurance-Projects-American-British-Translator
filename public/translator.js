@@ -75,11 +75,11 @@ const Translate = (text, toLocale) => {
           return highlighText(capitalize(americanToBritishTitles[testWord]));
       }
       //other terms
-      let testTerm = testWord
-      if (americanToBritishDict[testWord]){
+      let testTerm = testWord.split(/([\s,.;:?])/);
+      if (americanToBritishDict[testTerm[0]]){
         return word[0] > 64 && word < 91? 
-          highlighText(capitalize(americanToBritishDict[testWord])) 
-          : highlighText(americanToBritishDict[testWord]);
+          highlighText(capitalize(americanToBritishDict[testTerm[0]])) 
+          : highlighText(americanToBritishDict[testTerm[0]]);
       }
       
       
