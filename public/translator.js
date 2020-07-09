@@ -43,7 +43,7 @@ const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 const Translate = (text, toLocale) => {
   
   let needTranslation = false;
-  const Dict = toLocale === 'british' ? americanToBritishDict : britishToAmericanDict;
+  const Dictionary = toLocale === 'toBritish' ? americanToBritishDict : britishToAmericanDict;
   console.log("text: " + text);///////////
   console.log("toLocale: " + toLocale);///////////
   
@@ -51,15 +51,22 @@ const Translate = (text, toLocale) => {
   } else { errorMessage.innerText = ""; }
   
   // test for 2 or more words terms.
-  let arrayDic = Object.getOwnPropertyNames(Dict).sort( (a, b) => b.length - a.length );
+  let compTerm = Object.getOwnPropertyNames(Dictionary)
+    .filter(item => item.includes(" "))
+    .sort( (a, b) => b.length - a.length );
   
-  for (let term in arrayDic){
-    let regEx = new RegExp(arrayDic[term], "i");
-    console.log("arrayDic['rv park']: "+arrayDic["rv park"]);
-    //console.log(text.includes(arrayDic[term]));
-    text = text.replace(regEx, Dict[arrayDic[term]]);
+  for (let term in compTerm){
+    let regEx = new RegExp(compTerm[term], "i");
+    if (text.toLowercase.includes(compTerm[term])){
+      needTranslation = true
+      text = text.replace(regEx, ()=>{
+        return Dictionary[compTerm[term]]
+      });
+    }
   }
   console.log("text: "+text);///////////
+  
+  
   
 }
 
