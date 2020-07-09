@@ -51,9 +51,9 @@ const Translate = (text, toLocale) => {
     console.log("word:" + word);/////////////////////////
     
     // is time?
-    let regexTime = /^\d{1,2}[\.\:]\d{2}$/;
-    if (word.test(regexTime)){
-      word.replace(regexTime, (t) => {
+    let regexTime = /^\d{1,2}([\.\:])\d{2}$/;
+    if (regexTime.test(word)){
+      word.replace(regexTime, ($1) => {
         console.log("t: " + t);
       })
     }
