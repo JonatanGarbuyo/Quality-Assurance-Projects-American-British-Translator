@@ -66,9 +66,6 @@ const Translate = (text, toLocale) => {
       return;
     }
     
-                   
-                   
-                   
     // is title? 
     console.log("is title? ");
     
@@ -80,7 +77,7 @@ const Translate = (text, toLocale) => {
     //translatedSentence.insertAdjacentText("afterend", "My inserted text");
     //translatedSentence.insertAdjacentHTML("afterend", `<span class="highlight">${word}</span>`);
     returnText.push(word);
-    return
+    return;
   });
   
   translatedSentence.innerHTML = returnText.join(" ");
