@@ -55,7 +55,7 @@ const Translate = (text, toLocale) => {
   
   for (let term in arrayDic){
     let regEx = new RegExp(arrayDic[term], "i");
-    console.log(text.includes(arrayDic[term]);
+    console.log(text.includes(arrayDic[term]));
     text.replace(regEx, (x)=>Dict[x])
   }
   console.log("text: "+text);///////////
