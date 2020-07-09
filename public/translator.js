@@ -72,17 +72,20 @@ const Translate = (text, toLocale) => {
     console.log("is title? ");
     
     if (toLocale === 'toBritish'){
-      forEach(term in americanToBritishDict){
-        
+      for (let title in americanToBritishTitles){
+        console.log("title: "+ title);////////////
+        if (word.toLowerCase() === americanToBritishTitles[title]){
+          
+        }
       }
-      return highlighText(`${$2}.${$4}`); 
-    }
+    } 
     else if (toLocale === 'toAmerican'){ 
-      forEach(term in britishToAmericanDict){
-        
+      for (let term in britishToAmericanDict){
+        console.log("term: "+ term);////////////
       }
-      return highlighText(`${$2}:${$4}`); 
     }
+    
+    
     //other words
     
     //let highlightedText = document.createElement("span").setAttribute("class", "highlight");
