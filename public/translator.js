@@ -51,7 +51,9 @@ const Translate = (text, toLocale) => {
   } else { errorMessage.innerText = ""; }
   
   // test for 2 or more words terms.
-  Object.keys(Dict).forEach(term => {
+  Object.getOwnPropertyNames(Dict)
+    .sort( (a, b) => b.length - a.length )
+    .forEach(term => {
     
   })
   
