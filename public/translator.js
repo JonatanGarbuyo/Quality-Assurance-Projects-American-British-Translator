@@ -81,12 +81,14 @@ const Translate = (text, toLocale) => {
       }
       //other terms
       if (americanToBritishDict[testTerm[0]]){
-        console.log("americanToBritishDict[testTerm[0]: "+americanToBritishDict[testTerm[0]);///////////////
+        console.log("americanToBritishDict[testTerm[0]: "+americanToBritishDict[testTerm[0]]);///////////////
         needTranslation = true;
-        return word[0] > 64 && word < 91? 
+        console.log("capitalize: " +capitalize(americanToBritishDict[testTerm[0]]));
+        console.log(word <= "Z");
+        return word[0] >= "A" && word <= "Z"? 
           // return the capitalized and highlighted text plus sign if there is any.
-          highlighText(capitalize(americanToBritishDict[testTerm[0]])) + testTerm[1]?testTerm[1]:""
-          : highlighText(americanToBritishDict[testTerm[0]]) + testTerm[1]?testTerm[1]:"";
+          highlighText(capitalize(americanToBritishDict[testTerm[0]])) + (testTerm[1]?testTerm[1]:"")
+          : highlighText(americanToBritishDict[testTerm[0]]) + (testTerm[1]?testTerm[1]:"");
       }
     } 
     else if (toLocale === 'toAmerican'){ 
@@ -98,7 +100,7 @@ const Translate = (text, toLocale) => {
       //other terms
       if (britishToAmericanDict[testTerm[0]]){
         needTranslation = true;
-        return word[0] > 64 && word < 91? 
+        return word[0] >= "A" && word <= "Z"? 
           // return the capitalized and highlighted text plus sign if there is any.
           highlighText(capitalize(britishToAmericanDict[testTerm[0]])) + testTerm[1]?testTerm[1]:""
           : highlighText(britishToAmericanDict[testTerm[0]]) + testTerm[1]?testTerm[1]:"";
