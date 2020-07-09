@@ -43,11 +43,20 @@ const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 const Translate = (text, toLocale) => {
   
   let needTranslation = false;
+  const Dict = toLocale === 'british' ? americanToBritishDict : britishToAmericanDict;
   console.log("text: " + text);///////////
   console.log("toLocale: " + toLocale);///////////
   
   if(!text){ return errorMessage.innerText = "Error: No text to translate.";
   } else { errorMessage.innerText = ""; }
+  
+  // test for 2 or more words terms.
+  Object.keys(Dict).forEach(term => {
+    
+  }
+  
+  
+  
   
   let returnText = text.split(" ").map((word, i, arr)=>{
     console.log("word to test:" + word);/////////////////////////
@@ -78,45 +87,26 @@ const Translate = (text, toLocale) => {
     console.log("testTerm[0]: "+testTerm[0]);///////////////
     console.log("testTerm[1]: "+testTerm[1]);///////////////
     
-    if (toLocale === 'toBritish'){
-      // is title? 
-      if (americanToBritishTitles[testWord]) {
-        console.log("americanToBritishTitles[testWord]: "+americanToBritishTitles[testWord]);///////////////
-        needTranslation = true;
-        return highlighText(capitalize(americanToBritishTitles[testWord]));
-      }
-      //other terms
-      if (americanToBritishDict[testTerm[0]]){
-        console.log("americanToBritishDict[testTerm[0]: "+americanToBritishDict[testTerm[0]]);///////////////
-        needTranslation = true;
-        console.log("capitalize: " +capitalize(americanToBritishDict[testTerm[0]]));
-        console.log(word <= "Z");
-        return word[0] >= "A" && word <= "Z"? 
-          // return the capitalized and highlighted text plus sign if there is any.
-          highlighText(capitalize(americanToBritishDict[testTerm[0]])) + (testTerm[1]?testTerm[1]:"")
-          : highlighText(americanToBritishDict[testTerm[0]]) + (testTerm[1]?testTerm[1]:"");
-      }
-      // 
-      
-    } 
-    else if (toLocale === 'toAmerican'){ 
-      // is title? 
-      if (britishToAmericanTitles[testWord]) {
-        console.log("britishToAmericanTitles[testWord]: "+britishToAmericanTitles[testWord]);///////////////
-        needTranslation = true;
-        return highlighText(capitalize(britishToAmericanTitles[testWord]));
-      }
-      //other terms
-      if (britishToAmericanDict[testTerm[0]]){
-        needTranslation = true;
-        console.log("capitalize: " +capitalize(britishToAmericanDict[testTerm[0]]));
-        console.log(word <= "Z");
-        return word[0] >= "A" && word <= "Z"? 
-          // return the capitalized and highlighted text plus sign if there is any.
-          highlighText(capitalize(britishToAmericanDict[testTerm[0]])) + (testTerm[1]?testTerm[1]:"")
-          : highlighText(britishToAmericanDict[testTerm[0]]) + (testTerm[1]?testTerm[1]:"");
-      }
+    // is title? 
+    if (americanToBritishTitles[testWord]) {
+      console.log("americanToBritishTitles[testWord]: "+americanToBritishTitles[testWord]);///////////////
+      needTranslation = true;
+      return highlighText(capitalize(americanToBritishTitles[testWord]));
     }
+    //other terms
+    if (Dict[testTerm[0]]){
+      console.log(Dict+"[testTerm[0]: "+Dict[testTerm[0]]);///////////////
+      needTranslation = true;
+      console.log("capitalize: " +capitalize(Dict[testTerm[0]]));
+      console.log(word <= "Z");
+      return word[0] >= "A" && word <= "Z"? 
+        // return the capitalized and highlighted text plus sign if there is any.
+        highlighText(capitalize(Dict[testTerm[0]])) + (testTerm[1]?testTerm[1]:"")
+        : highlighText(Dict[testTerm[0]]) + (testTerm[1]?testTerm[1]:"");
+    }
+    // 
+      
+    
     
     return word;
   });
