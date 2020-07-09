@@ -94,6 +94,7 @@ const Translate = (text, toLocale) => {
           highlighText(capitalize(americanToBritishDict[testTerm[0]])) + (testTerm[1]?testTerm[1]:"")
           : highlighText(americanToBritishDict[testTerm[0]]) + (testTerm[1]?testTerm[1]:"");
       }
+      // 
     } 
     else if (toLocale === 'toAmerican'){ 
       // is title? 
