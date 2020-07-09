@@ -57,7 +57,8 @@ const Translate = (text, toLocale) => {
   
   for (let term in compTerm){
     let regEx = new RegExp(compTerm[term], "i");
-    if (text.toLowercase.includes(compTerm[term])) {
+    
+    if (text.toLowerCase().includes(compTerm[term])) {
       needTranslation = true
       text = text.replace(regEx, ()=>{
         return Dictionary[compTerm[term]];
