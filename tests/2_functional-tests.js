@@ -17,7 +17,7 @@ suite('Functional Tests', () => {
     Translator = require('../public/translator.js');
   });
 
-  suite('Function ____()', () => {
+  suite('Function Translate()', () => {
     /* 
       The translated sentence is appended to the `translated-sentence` `div`
       and the translated words or terms are wrapped in 

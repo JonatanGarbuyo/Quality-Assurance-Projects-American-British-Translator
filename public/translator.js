@@ -97,11 +97,12 @@ const Translate = (text, toLocale) => {
     console.log("testTerm[0]: "+testTerm[0]);///////////////
     console.log("testTerm[1]: "+testTerm[1]);///////////////
     
-    // is title? 
-    if (americanToBritishTitles[testWord]) {
-      console.log("americanToBritishTitles[testWord]: "+americanToBritishTitles[testWord]);///////////////
+    // is title?
+    const Titles = toLocale === 'toBritish' ? americanToBritishTitles : britishToAmericanTitles;
+    if (Titles[testWord]) {
+      console.log("Titles[testWord]: "+Titles[testWord]);/////////////
       needTranslation = true;
-      return highlighText(capitalize(americanToBritishTitles[testWord]));
+      return highlighText(capitalize(Titles[testWord]));
     }
     //other terms
     if (Dictionary[testTerm[0]]){

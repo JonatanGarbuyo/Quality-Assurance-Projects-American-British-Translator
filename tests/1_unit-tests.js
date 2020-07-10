@@ -190,7 +190,7 @@ suite('Unit Tests', () => {
         const output = 'Lunch is at <span class="highlight">12:15</span> today.';
         const testStr = Translator.Translate(input, 'toAmerican');
         assert.strictEqual(testStr, output);
-        //done();    
+        done();    
       });
 
     });
