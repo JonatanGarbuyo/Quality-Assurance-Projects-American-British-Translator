@@ -47,7 +47,8 @@ const Translate = (text, toLocale) => {
   console.log("text: " + text);///////////
   console.log("toLocale: " + toLocale);///////////
   
-  if(!text){ return errorMessage.innerText = "Error: No text to translate.";
+  if(!text || text.length < 1){ 
+    return errorMessage.innerText = "Error: No text to translate.";
   } else { errorMessage.innerText = ""; }
   
   // test for 2 or more words terms.

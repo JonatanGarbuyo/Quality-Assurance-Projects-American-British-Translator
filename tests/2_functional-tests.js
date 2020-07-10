@@ -58,8 +58,15 @@ suite('Functional Tests', () => {
       the `error-msg` `div`.
     */
     test("'Error: No text to translate.' message appended to the `translated-sentence` `div`", done => {
+      const textArea = document.getElementById('text-input');
+      textArea.value = null;
+      const errorDiv = document.getElementById('error-msg');
+      const output = "Error: No text to translate.";
+      
+      Translator.Translate(textArea.value, 'toBritish');
 
-      // done();
+      assert.equal(errorDiv.textContent, output);
+      done();
     });
 
   });
