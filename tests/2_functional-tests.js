@@ -59,26 +59,39 @@ suite('Functional Tests', () => {
     */
     test("'Error: No text to translate.' message appended to the `translated-sentence` `div`", done => {
       const textArea = document.getElementById('text-input');
-      textArea.value = null;
+      textArea.value = "";
       const errorDiv = document.getElementById('error-msg');
       const output = "Error: No text to translate.";
       
       Translator.Translate(textArea.value, 'toBritish');
-
-      assert.equal(errorDiv.textContent, output);
+      
+      assert.equal(errorDiv.innerText, output);
       done();
     });
 
   });
 
-  suite('Function ____()', () => {
+  suite('Function ClearText()', () => {
     /* 
       The text area and both the `translated-sentence` and `error-msg`
       `divs` are cleared when the "Clear" button is pressed.
     */
     test("Text area, `translated-sentence`, and `error-msg` are cleared", done => {
+      const textArea = document.getElementById('text-input');
+      const translationDiv = document.getElementById('translated-sentence');
+      const errorDiv = document.getElementById('error-msg');
 
-      // done();
+      textArea.value = "biro";
+      translationDiv.textContent = "ballpoint pen";
+      
+      errorDiv.textContent = 'Error: No text to translate.';
+
+      Translator.ClearText();
+
+      assert.strictEqual(textArea.value, '');
+      assert.strictEqual(translationDiv.innerText, '');
+      assert.strictEqual(errorDiv.innerText, '');
+      done();
     });
 
   });

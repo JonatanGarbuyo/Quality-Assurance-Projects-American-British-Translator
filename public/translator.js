@@ -47,7 +47,7 @@ const Translate = (text, toLocale) => {
   console.log("text: " + text);///////////
   console.log("toLocale: " + toLocale);///////////
   
-  if(!text || text.length < 1){ 
+  if(!text){ 
     return errorMessage.innerText = "Error: No text to translate.";
   } else { errorMessage.innerText = ""; }
   
