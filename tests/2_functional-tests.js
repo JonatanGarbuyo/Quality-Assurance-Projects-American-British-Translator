@@ -24,8 +24,15 @@ suite('Functional Tests', () => {
       `<span class="highlight">...</span>` tags when the "Translate" button is pressed.
     */
     test("Translation appended to the `translated-sentence` `div`", done => {
+      const textArea = document.getElementById('text-input');
+      const translationDiv = document.getElementById('translated-sentence');
+      const output = `freeCodeCamp is my <span class="highlight">favourite</span>.`;
+      
+      textArea.value = 'freeCodeCamp is my favorite.';
+      Translator.Translate(textArea.value, 'toBritish');
 
-      // done();
+      assert.strictEqual(translationDiv.innerHTML, output);
+      done();
     });
 
     /* 
@@ -34,8 +41,15 @@ suite('Functional Tests', () => {
       `translated-sentence` `div` when the "Translate" button is pressed.
     */
     test("'Everything looks good to me!' message appended to the `translated-sentence` `div`", done => {
+      const textArea = document.getElementById('text-input');
+      textArea.value = "I saw a mum pushing a pram.";
+      const translationDiv = document.getElementById('translated-sentence');
+      const output = 'Everything looks good to me!';
+      
+      Translator.Translate(textArea.value, 'toBritish');
 
-      // done();
+      assert.strictEqual(translationDiv.textContent, output);
+      done();
     });
 
     /* 
