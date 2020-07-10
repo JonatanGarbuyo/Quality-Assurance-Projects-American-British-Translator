@@ -46,10 +46,11 @@ suite('Unit Tests', () => {
 
       test("We had a party at my friend's condo. --> We had a party at my friend's flat.", done => {
         const input = "We had a party at my friend's condo.";
-        const output = "We had a party at my friend's <span class='highlight'>flat<span>.";
+        const output = `We had a party at my friend's <span class="highlight">flat<span>.`;
         const testStr = Translator.Translate(input, 'toBritish');
+        //console.log(testStr);
         assert.strictEqual(testStr, output);
-        done();
+        done();  
       });
 
       test('Can you toss this in the trashcan for me? --> Can you toss this in the bin for me?', done => {
@@ -154,7 +155,7 @@ suite('Unit Tests', () => {
 
       test("I've just got bits and bobs in my bum bag. --> I've just got odds and ends in my fanny pack.", done => {
         const input = "I've just got bits and bobs in my bum bag.";
-        const output = "I've just got <span class='highlight'>odds and ends<span> in my <span class='highlight'>fanny pack<span>.";
+        const output = `I've just got <span class="highlight">odds and ends<span> in my <span class='highlight'>fanny pack<span>.`;
         const testStr = Translator.Translate(input, 'toAmerican');
         assert.strictEqual(testStr, output);
         done();
@@ -162,7 +163,7 @@ suite('Unit Tests', () => {
       
       test("The car boot sale at Boxted Airfield was called off. --> The swap meet at Boxted Airfield was called off.", done => {
         const input = "The car boot sale at Boxted Airfield was called off.";
-        const output = "The <span class='highlight'>swap meet<span> at Boxted Airfield was called off.";
+        const output = `The <span class="highlight">swap meet<span> at Boxted Airfield was called off.`;
         const testStr = Translator.Translate(input, 'toAmerican');
         assert.strictEqual(testStr, output);
         done();
@@ -170,7 +171,7 @@ suite('Unit Tests', () => {
 
       test("Have you met Mrs Kalyani? --> Have you met Mrs. Kalyani?", done => {
         const input = "Have you met Mrs Kalyani?";
-        const output = "Have you met <span class='highlight'>Mrs.<span> Kalyani?";
+        const output = `Have you met <span class="highlight">Mrs.<span> Kalyani?`;
         const testStr = Translator.Translate(input, 'toAmerican');
         assert.strictEqual(testStr, output);
         done();
@@ -178,7 +179,7 @@ suite('Unit Tests', () => {
 
       test("Prof Joyner of King's College, London. --> Prof. Joyner of King's College, London.", done => {
         const input = "Prof Joyner of King's College, London.";
-        const output = "<span class='highlight'>Prof.<span> Joyner of King's College, London.";
+        const output = `<span class="highlight">Prof.<span> Joyner of King's College, London.`;
         const testStr = Translator.Translate(input, 'toAmerican');
         assert.strictEqual(testStr, output);
         done();
