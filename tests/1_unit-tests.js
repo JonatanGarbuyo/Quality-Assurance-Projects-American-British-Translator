@@ -24,14 +24,14 @@ suite('Unit Tests', () => {
       });
   });
 
-  suite('Function ____()', () => {
+  suite('Function Translate()', () => {
 
     suite('American to British English', () => {
 
       test('Mangoes are my favorite fruit. --> Mangoes are my favourite fruit.', done => {
         const input = 'Mangoes are my favorite fruit.';
         const output = 'Mangoes are my favourite fruit.';
-        const testStr = Translator.Translate(input, 'british').translatedStr;
+        const testStr = Translator.Translate(input, 'british');
         assert.strictEqual(testStr, output);
         done();
       });
