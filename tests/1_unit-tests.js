@@ -32,6 +32,7 @@ suite('Unit Tests', () => {
         const input = 'Mangoes are my favorite fruit.';
         const output = 'Mangoes are my favourite fruit.';
         const testStr = Translator.Translate(input, 'british');
+        console.log(testStr);// 
         assert.strictEqual(testStr, output);
         done();
       });
