@@ -90,7 +90,7 @@ suite('Unit Tests', () => {
         const output = 'No <span class="highlight">Mr</span> Bond, I expect you to die.';
         const testStr = Translator.Translate(input, 'toBritish');
         assert.strictEqual(testStr, output);
-        done();
+        done(); 
       });
 
       test('Dr. Grosh will see you now. --> Dr Grosh will see you now. ', done => {
@@ -139,11 +139,11 @@ suite('Unit Tests', () => {
 
       test('I spent the bank holiday at the funfair. --> I spent the public holiday at the carnival.', done => {
         const input = 'I spent the bank holiday at the funfair.';
-        const output = 'I spent the <span class="highlight">public holiday</span> at the carnival. at the carnival.';
+        const output = 'I spent the <span class="highlight">public holiday</span> at the <span class="highlight">carnival</span>.';
         const testStr = Translator.Translate(input, 'toAmerican');
         assert.strictEqual(testStr, output);
         done();
-      });
+      });  
 
       test('I had a bicky then went to the chippy. --> I had a cookie then went to the fish-and-chip shop.', done => {
         const input = 'I had a bicky then went to the chippy.';
@@ -155,7 +155,7 @@ suite('Unit Tests', () => {
 
       test("I've just got bits and bobs in my bum bag. --> I've just got odds and ends in my fanny pack.", done => {
         const input = "I've just got bits and bobs in my bum bag.";
-        const output = `I've just got <span class="highlight">odds and ends</span> in my <span class='highlight'>fanny pack</span>.`;
+        const output = `I've just got <span class="highlight">odds and ends</span> in my <span class="highlight">fanny pack</span>.`;
         const testStr = Translator.Translate(input, 'toAmerican');
         assert.strictEqual(testStr, output);
         done();
@@ -190,7 +190,7 @@ suite('Unit Tests', () => {
         const output = 'Lunch is at <span class="highlight">12:15</span> today.';
         const testStr = Translator.Translate(input, 'toAmerican');
         assert.strictEqual(testStr, output);
-        done();    
+        //done();    
       });
 
     });
